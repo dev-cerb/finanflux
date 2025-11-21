@@ -1,0 +1,146 @@
+/* src/app/globals.css */
+
+:root{
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --primary-hover: #1e40af;
+  --radius: 10px;
+  --gap: 14px;
+  font-size: 16px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main h1 {
+  color: #2457f5;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.pageContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Page layout */
+.pageRoot {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 16px;
+}
+
+/* Card / form wrapper */
+.form {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(31,41,55,0.08);
+  padding: 28px;
+}
+
+/* Brand */
+.brand {
+  margin: 0 0 18px 0;
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+/* form inner spacing */
+.formInner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input field */
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--gap);
+}
+
+.inputLabel {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.inputControl {
+  height: 42px;
+  padding: 8px 12px;
+  border: 1px solid #e6e9ee;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  background: #fff;
+}
+
+.inputControl:focus {
+  border-color: rgba(37,99,235,0.85);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.08);
+}
+
+/* Buttons */
+.btn {
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: var(--primary-hover);
+}
+
+/* link / helper text */
+.muted {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* small screens */
+@media (max-width: 480px) {
+  .form { padding: 20px; border-radius: 8px; }
+  .brand { font-size: 22px; }
+}
