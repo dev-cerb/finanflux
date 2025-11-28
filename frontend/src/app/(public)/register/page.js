@@ -2,12 +2,16 @@
 
 import InputField from "@/app/components/inputField";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Register() {
   const router = useRouter();
+  const [error, setError] = useState(null);
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
+    setError(null)
+
     const data = {
       user: event.target.user.value,
       password: event.target.password.value,
@@ -16,12 +20,33 @@ export default function Register() {
     };
 
     if (data.password !== data.confirmPassword) {
-      console.log("Erro: As senhas não coincidem");
+      setError("As senhas não coincidem, verifique!");
       return;
     }
 
-    console.log("Cadastro:", JSON.stringify(data));
+    try{
+      const response = await fetch('http://localhost:8000/api/v1/users/', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          user: data.user,
+          password: data.password,
+          email: data.email
+        })
+      });
 
+      if(!response.ok){
+        const resData = await response.json();
+        setError(resData.error || "Erro ao registrar usuário");
+        return;
+      }
+    }catch(err){
+      setError("Erro ao conectar ao servidor")
+    }
+
+    alert("Conta criada com sucesso!");
     router.push("/");
   };
 
@@ -36,6 +61,9 @@ export default function Register() {
             <InputField label="Senha:" id="password" name="password" type="password" required />
             <InputField label="Confirmar senha:" id="confirmPassword" name="confirmPassword" type="password" required />
             <InputField label="Email:" id="email" name="email" type="email" required />
+
+            {error && <p style={{ color: "red" }}>{error}</p>}
+
             <button type="submit" className="btn primary">Registrar</button>
           </form>
         </div>
