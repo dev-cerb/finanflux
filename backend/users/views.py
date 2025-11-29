@@ -1,6 +1,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
+
+from django.contrib.auth.hashers import check_password
+
 from .models import Users
 from .serializers import UsersSerializer
 
@@ -15,3 +19,23 @@ class UsersAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class LoginAPIView(APIView):
+    def post(self, request):
+        user = request.data.get("user")
+        password = request.data.get("password")
+
+        try:
+            user_obj = Users.objects.get(user=user)
+        except Users.DoesNotExist:
+            return Response({"error": "Usuário não encontrado"}, status=400)
+
+        if not check_password(password, user_obj.password):
+            return Response({"error": "Senha incorreta"}, status=400)
+
+        refresh = RefreshToken.for_user(user_obj)
+        return Response({
+            "refresh": str(refresh),
+            "access": str(refresh.access_token),
+            "username": user_obj.user
+        })
