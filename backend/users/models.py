@@ -1,10 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 # Create your models here.
-class Users(models.Model):
-    user = models.CharField(max_length=30, unique=True, null=False)
-    password = models.CharField(max_length=128, null=False)
-    email = models.EmailField(unique= True, null=False)
+class Users(AbstractUser):
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
@@ -14,7 +13,7 @@ class Users(models.Model):
 
 
     def __str__(self):
-        return self.user
+        return self.username
 
 class Profile(models.Model):
     INVESTOR_TYPES = [
@@ -23,7 +22,7 @@ class Profile(models.Model):
         ('agressivo', 'Agressivo')
     ]
 
-    user = models.OneToOneField(Users, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL , on_delete=models.CASCADE)
     type_of_investor = models.CharField(
         max_length=20,
         choices=INVESTOR_TYPES,
@@ -35,5 +34,5 @@ class Profile(models.Model):
         verbose_name_plural = "Profiles"
 
     def __str__(self):
-        return f"Perfil de {self.user.user}"
+        return f"Perfil de {self.user.username}"
     

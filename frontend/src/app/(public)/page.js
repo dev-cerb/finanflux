@@ -14,7 +14,7 @@ export default function Home() {
     event.preventDefault();
 
     const data = {
-      user: event.target.user.value,
+      username: event.target.username.value,
       password: event.target.password.value
     };
     
@@ -39,7 +39,6 @@ export default function Home() {
 
       router.push("/dashboard");
     }catch (err) {
-      console.log(err);
       setError("Erro na conexão ao servidor")
     }
   };
@@ -50,7 +49,7 @@ export default function Home() {
         <h1 className="brand">FinanFlux</h1>
         <div className="form">
           <form onSubmit={handleLogin} className="formInner">
-            <InputField label="Usuário:" id="user" name="user" required />
+            <InputField label="Usuário:" id="username" name="username" required />
             <InputField label="Senha:" id="password" name="password" type="password" required />
 
             {error && <p style={{ color: "red" }}>{error}</p>}

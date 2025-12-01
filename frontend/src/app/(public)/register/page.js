@@ -13,7 +13,7 @@ export default function Register() {
     setError(null)
 
     const data = {
-      user: event.target.user.value,
+      username: event.target.username.value,
       password: event.target.password.value,
       confirmPassword: event.target.confirmPassword.value,
       email: event.target.email.value
@@ -31,7 +31,7 @@ export default function Register() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          user: data.user,
+          username: data.username,
           password: data.password,
           email: data.email
         })
@@ -57,7 +57,7 @@ export default function Register() {
 
         <div className="form">
           <form onSubmit={handleRegister} className="formInner">
-            <InputField label="Usuário:" id="user" name="user" required />
+            <InputField label="Usuário:" id="username" name="username" required />
             <InputField label="Senha:" id="password" name="password" type="password" required />
             <InputField label="Confirmar senha:" id="confirmPassword" name="confirmPassword" type="password" required />
             <InputField label="Email:" id="email" name="email" type="email" required />
