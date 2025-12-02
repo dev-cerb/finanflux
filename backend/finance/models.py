@@ -12,7 +12,7 @@ class GeneralInformation(models.Model):
         verbose_name_plural = "General Informations"
 
     def __str__(self):
-        return f'User {self.user.usename} - Salário {self.salary} - Limite de gastos estipulados {self.limit}'
+        return f'User {self.user.username} - Salário {self.salary} - Limite de gastos estipulados {self.limit}'
 
 class Goal(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -34,7 +34,7 @@ class Goal(models.Model):
         return 0
 
     def __str__(self):
-        return f"Meta: {self.name} ({self.user.usename})"
+        return f"Meta: {self.name} ({self.user.username})"
     
 class Debit(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -50,7 +50,7 @@ class Debit(models.Model):
         verbose_name_plural = "Debits"
 
     def __str__(self):
-        return f'Dívida {self.name} - Valor Total {self.total_value} / Pago {self.current_value} ({self.user.usename})'
+        return f'Dívida {self.name} - Valor Total {self.total_value} / Pago {self.current_value} ({self.user.username})'
     
 class Category(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -62,7 +62,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
     def __str__(self):
-        return f"Categoria {self.name} de usuário {self.user.usename}"
+        return f"Categoria {self.name} de usuário {self.user.username}"
     
 class Transaction(models.Model):
     TRANSACTION_TYPES = [
@@ -86,4 +86,4 @@ class Transaction(models.Model):
         verbose_name_plural = "Transactions"
 
     def __str__(self):
-        return f'{self.type_of_transaction} - {self.value} ({self.user.usename})'
+        return f'{self.type_of_transaction} - {self.value} ({self.user.username})'

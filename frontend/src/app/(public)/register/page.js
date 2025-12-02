@@ -1,8 +1,9 @@
 "use client";
 
-import InputField from "@/app/components/inputField";
+import InputField from "@/components/inputField";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Register() {
   const router = useRouter();
@@ -10,13 +11,13 @@ export default function Register() {
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    setError(null)
+    setError(null);
 
     const data = {
       username: event.target.username.value,
       password: event.target.password.value,
       confirmPassword: event.target.confirmPassword.value,
-      email: event.target.email.value
+      email: event.target.email.value,
     };
 
     if (data.password !== data.confirmPassword) {
@@ -24,26 +25,27 @@ export default function Register() {
       return;
     }
 
-    try{
-      const response = await fetch('http://localhost:8000/api/v1/users/', {
-        method: 'POST',
+    try {
+      const response = await fetch("http://localhost:8000/api/v1/users/", {
+        method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           username: data.username,
           password: data.password,
-          email: data.email
-        })
+          email: data.email,
+        }),
       });
 
-      if(!response.ok){
+      if (!response.ok) {
         const resData = await response.json();
         setError(resData.error || "Erro ao registrar usuário");
         return;
       }
-    }catch(err){
-      setError("Erro ao conectar ao servidor")
+    } catch (err) {
+      setError("Erro ao conectar ao servidor");
+      return;
     }
 
     alert("Conta criada com sucesso!");
@@ -51,22 +53,69 @@ export default function Register() {
   };
 
   return (
-    <main className="pageRoot">
-      <div className="pageContent">
-        <h1 className="brand">FinanFlux</h1>
+    <main className="min-h-screen flex items-center justify-center bg-nubank-dark text-white px-4">
+      <div className="w-full max-w-md bg-nubank-card p-8 rounded-2xl shadow-xl shadow-purple-900/40">
+        
+        {/* Título */}
+        <h1 className="text-3xl font-bold text-center mb-8 text-nubank-purple">
+          Criar Conta
+        </h1>
 
-        <div className="form">
-          <form onSubmit={handleRegister} className="formInner">
-            <InputField label="Usuário:" id="username" name="username" required />
-            <InputField label="Senha:" id="password" name="password" type="password" required />
-            <InputField label="Confirmar senha:" id="confirmPassword" name="confirmPassword" type="password" required />
-            <InputField label="Email:" id="email" name="email" type="email" required />
+        {/* Formulário */}
+        <form onSubmit={handleRegister} className="space-y-5">
 
-            {error && <p style={{ color: "red" }}>{error}</p>}
+          <div>
+            <label htmlFor="username" className="block text-sm mb-1 text-purple-200">
+              Usuário
+            </label>
+            <InputField id="username" name="username" required />
+          </div>
 
-            <button type="submit" className="btn primary">Registrar</button>
-          </form>
-        </div>
+          <div>
+            <label htmlFor="password" className="block text-sm mb-1 text-purple-200">
+              Senha
+            </label>
+            <InputField id="password" name="password" type="password" required />
+          </div>
+
+          <div>
+            <label htmlFor="confirmPassword" className="block text-sm mb-1 text-purple-200">
+              Confirmar senha
+            </label>
+            <InputField
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm mb-1 text-purple-200">
+              Email
+            </label>
+            <InputField id="email" name="email" type="email" required />
+          </div>
+
+          {/* Exibir erro */}
+          {error && <p className="text-red-400 text-sm font-medium">{error}</p>}
+
+          {/* Botão */}
+          <button
+            type="submit"
+            className="w-full bg-nubank-purple hover:bg-nubank-purple/80 transition-colors py-2 rounded-lg font-bold"
+          >
+            Registrar
+          </button>
+
+        </form>
+
+        <p className="text-center mt-6 text-purple-300 text-sm">
+          Já tem conta?{" "}
+          <Link href="/" className="text-nubank-purple font-semibold hover:underline">
+            Entrar
+          </Link>
+        </p>
       </div>
     </main>
   );
