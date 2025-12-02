@@ -1,12 +1,11 @@
-export default function RootLayout({ children }) {
+"use client";
+
+import AppLayout from "../../components/layout/appLayout";
+
+export default function PrivateLayout({ children }) {
   return (
-    <html lang="pt-br">
-      <head>
-        <title>FinanFlux | Dashboard</title>
-      </head>
-      <body>
-        {children}
-      </body>
-    </html>
+    <AppLayout>
+      {children}
+    </AppLayout>
   );
 }
