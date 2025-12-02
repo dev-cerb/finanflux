@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import InputField from "../components/inputField";
-
+import InputField from "../../components/inputField";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -15,14 +14,14 @@ export default function Home() {
 
     const data = {
       username: event.target.username.value,
-      password: event.target.password.value
+      password: event.target.password.value,
     };
-    
-    try{
+
+    try {
       const response = await fetch("http://localhost:8000/api/v1/login/", {
-        method: 'POST',
+        method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         credentials: "include",
         body: JSON.stringify(data),
@@ -30,7 +29,7 @@ export default function Home() {
 
       const resData = await response.json();
 
-      if(!response.ok){
+      if (!response.ok) {
         setError(resData.error || "Usuário ou senha inválidos");
         return;
       }
@@ -38,25 +37,75 @@ export default function Home() {
       localStorage.setItem("token", resData.access);
 
       router.push("/dashboard");
-    }catch (err) {
-      setError("Erro na conexão ao servidor")
+    } catch (err) {
+      setError("Erro na conexão ao servidor");
     }
   };
-  
-  return (
-    <main className="pageRoot">
-      <div className="pageContent">
-        <h1 className="brand">FinanFlux</h1>
-        <div className="form">
-          <form onSubmit={handleLogin} className="formInner">
-            <InputField label="Usuário:" id="username" name="username" required />
-            <InputField label="Senha:" id="password" name="password" type="password" required />
 
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <button type="submit" className="btn primary">Entrar</button>
-          </form>
-          <p className="muted">Novo por aqui ? <Link href="/register" className="link">Criar conta !</Link></p>
-        </div>
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-nubank-dark text-white px-4">
+      {/* Card principal */}
+      <div className="w-full max-w-md bg-nubank-card p-8 rounded-2xl shadow-xl shadow-purple-900/40">
+        
+        {/* Título */}
+        <h1 className="text-3xl font-bold text-center mb-8 text-nubank-purple">
+          FinanFlux
+        </h1>
+
+        {/* Formulário */}
+        <form onSubmit={handleLogin} className="space-y-5">
+
+          {/* Campo usuário */}
+          <div>
+            <label className="block text-sm mb-1 text-purple-200" htmlFor="username">
+              Usuário
+            </label>
+            <InputField
+              id="username"
+              name="username"
+              required
+            />
+          </div>
+
+          {/* Campo senha */}
+          <div>
+            <label className="block text-sm mb-1 text-purple-200" htmlFor="password">
+              Senha
+            </label>
+            <InputField
+              id="password"
+              name="password"
+              type="password"
+              required
+            />
+          </div>
+
+          {/* Erro */}
+          {error && (
+            <p className="text-red-400 text-sm font-medium">
+              {error}
+            </p>
+          )}
+
+          {/* Botão */}
+          <button
+            type="submit"
+            className="w-full bg-nubank-purple hover:bg-nubank-purple/80 transition-colors py-2 rounded-lg font-bold text-white"
+          >
+            Entrar
+          </button>
+        </form>
+
+        {/* Link Criar conta */}
+        <p className="text-center mt-6 text-purple-300 text-sm">
+          Novo por aqui?{" "}
+          <Link
+            href="/register"
+            className="text-nubank-purple font-semibold hover:underline"
+          >
+            Criar conta!
+          </Link>
+        </p>
       </div>
     </main>
   );
