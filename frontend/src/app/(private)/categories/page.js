@@ -16,7 +16,6 @@ export default function CategoriesPage() {
   return (
     <div className="text-white space-y-10">
 
-      {/* HEADER */}
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-bold text-nubank-purple">Categorias</h1>
 
@@ -31,7 +30,6 @@ export default function CategoriesPage() {
       {loading && <p>Carregando...</p>}
       {error && <p className="text-red-400">{error}</p>}
 
-      {/* LISTA */}
       <div className="space-y-4">
         {data.length === 0 ? (
           <div className="bg-nubank-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/20 text-purple-300">
@@ -49,7 +47,6 @@ export default function CategoriesPage() {
         )}
       </div>
 
-      {/* MODAL CRIAR/EDITAR */}
       {showModal && (
         <CategoryModal
           item={editing}
@@ -58,7 +55,6 @@ export default function CategoriesPage() {
         />
       )}
 
-      {/* MODAL EXCLUIR */}
       {deleting && (
         <ConfirmDeleteModal
           item={deleting}

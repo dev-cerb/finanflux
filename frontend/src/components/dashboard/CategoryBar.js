@@ -27,7 +27,7 @@ export default function CategoryBar({ name, spent, budget }) {
 
       {exceeded && (
         <p className="text-xs text-nubank-pink mt-1">
-          ⚠ Você excedeu o limite desta categoria
+          Você excedeu o limite desta categoria
         </p>
       )}
     </div>
