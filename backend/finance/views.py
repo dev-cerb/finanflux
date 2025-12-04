@@ -20,27 +20,33 @@ from .serializers import (
 )
 
 class GeneralInformationViewSet(viewsets.ModelViewSet):
-    queryset = GeneralInformation.objects.select_related("user")
     serializer_class = GeneralInformationSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return GeneralInformation.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
 
 class GoalViewSet(viewsets.ModelViewSet):
-    queryset = Goal.objects.select_related("user")
     serializer_class = GoalSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Goal.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
 
 class DebitViewSet(viewsets.ModelViewSet):
-    queryset = Debit.objects.select_related("user")
     serializer_class = DebitSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Debit.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -75,6 +81,7 @@ class DashboardSummaryAPIView(APIView):
         # ---- 1. Salário ----
         gi = GeneralInformation.objects.filter(user=user).first()
         salary = gi.salary if gi and gi.salary else 0
+        limit = gi.limit if gi and gi.limit else 0
 
         # ---- 2. Entradas ----
         entries = Transaction.objects.filter(
@@ -129,6 +136,7 @@ class DashboardSummaryAPIView(APIView):
             "email": user.email,
             "investor_type": investor_type,
             "salary": float(salary),
+            "limit": float(limit),
             "entries": float(entries),
             "expenses": float(expenses),
             "total_income": float(total_income),
@@ -136,6 +144,8 @@ class DashboardSummaryAPIView(APIView):
 
             # formatados (somente para exibição)
             "salary_formatted": f"R$ {salary:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
+
+            "limit_formatted": f"R$ {limit:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
 
             "entries_formatted": f"R$ {entries:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
 

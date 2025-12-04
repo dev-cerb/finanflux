@@ -7,31 +7,30 @@ export default function AppLayout({ children }) {
   return (
     <div className="min-h-screen flex bg-nubank-dark text-white">
 
-      {/* SIDEBAR */}
       <aside className="w-64 bg-nubank-card border-r border-purple-800/40 hidden md:flex flex-col p-6 shadow-xl shadow-black/20">
         
-        {/* Logo */}
+        
         <h1 className="text-2xl font-bold text-nubank-purple mb-10">
           FinanFlux
         </h1>
 
-        {/* Navigation */}
+        
         <nav className="flex-1 space-y-2">
-          <SidebarLink href="/dashboard" label="Dashboard" />
-          <SidebarLink href="/transactions" label="Transações" />
-          <SidebarLink href="/categories" label="Categorias" />
-          <SidebarLink href="/debits" label="Dívidas" />
-          <SidebarLink href="/goals" label="Metas" />
-          <SidebarLink href="/general-information" label="Informações" />
+          <Link href="/dashboard" className="block p-2 rounded hover:bg-gray-100">Dashboard</Link>
+          <Link href="/transactions" className="block p-2 rounded hover:bg-gray-100">Transações</Link>
+          <Link href="/categories" className="block p-2 rounded hover:bg-gray-100">Categorias</Link>
+          <Link href="/debits" className="block p-2 rounded hover:bg-gray-100">Dívidas</Link>
+          <Link href="/goals" className="block p-2 rounded hover:bg-gray-100">Metas</Link>
+          <Link href="/profile" className="block p-2 rounded hover:bg-gray-100">Perfil</Link>
+          <Link href="/general-information" className="block p-2 rounded hover:bg-gray-100">Informações</Link>
         </nav>
 
-        {/* Footer */}
+
         <p className="text-xs text-purple-300 mt-10">
           v1.0 — FinanFlux
         </p>
       </aside>
 
-      {/* MAIN CONTENT */}
       <main className="flex-1 p-10 lg:p-14">{children}</main>
     </div>
   );

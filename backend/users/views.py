@@ -46,9 +46,11 @@ class LoginAPIView(APIView):
         })
     
 class ProfileViewSet(viewsets.ModelViewSet):
-    queryset = Profile.objects.select_related("user")
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Profile.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
