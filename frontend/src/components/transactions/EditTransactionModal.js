@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import useCategories from "@/hooks/useCategories";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import { BASE_URL } from "@/services/api";
 
 export default function EditTransactionModal({ transaction, onClose, onUpdated }) {
   const { data: categories } = useCategories();
@@ -16,7 +17,6 @@ export default function EditTransactionModal({ transaction, onClose, onUpdated }
     date: "",
   });
 
-  // Preenche o formulário quando o modal abre
   useEffect(() => {
     if (transaction) {
       setForm({
@@ -39,7 +39,7 @@ export default function EditTransactionModal({ transaction, onClose, onUpdated }
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      `http://localhost:8000/api/v1/transactions/${transaction.id}/`,
+      `${BASE_URL}/transactions/${transaction.id}/`,
       {
         method: "PUT",
         headers: {
@@ -66,7 +66,7 @@ export default function EditTransactionModal({ transaction, onClose, onUpdated }
   const token = localStorage.getItem("token");
 
     const response = await fetch(
-        `http://localhost:8000/api/v1/transactions/${transaction.id}/`,
+        `${BASE_URL}/transactions/${transaction.id}/`,
         {
         method: "DELETE",
         headers: {
@@ -92,7 +92,6 @@ export default function EditTransactionModal({ transaction, onClose, onUpdated }
         </h2>
 
         <form onSubmit={saveChanges} className="space-y-5">
-          {/* Descrição */}
           <div>
             <label className="text-sm text-purple-200">Descrição</label>
             <input
@@ -104,7 +103,6 @@ export default function EditTransactionModal({ transaction, onClose, onUpdated }
             />
           </div>
 
-          {/* Valor */}
           <div>
             <label className="text-sm text-purple-200">Valor</label>
             <input
@@ -117,7 +115,6 @@ export default function EditTransactionModal({ transaction, onClose, onUpdated }
             />
           </div>
 
-          {/* Tipo */}
           <div>
             <label className="text-sm text-purple-200">Tipo</label>
             <select
@@ -131,7 +128,6 @@ export default function EditTransactionModal({ transaction, onClose, onUpdated }
             </select>
           </div>
 
-          {/* Categoria */}
           <div>
             <label className="text-sm text-purple-200">Categoria</label>
             <select
@@ -147,7 +143,6 @@ export default function EditTransactionModal({ transaction, onClose, onUpdated }
             </select>
           </div>
 
-          {/* Data */}
           <div>
             <label className="text-sm text-purple-200">Data</label>
             <input

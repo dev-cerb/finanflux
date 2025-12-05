@@ -11,7 +11,7 @@ export default function useIA() {
   async function analyze(data) {
     setLoadingAI(true);
     setErrorAI(null);
-    setAnalysis(null); // limpa análise anterior
+    setAnalysis(null);
 
     try {
       const json = await apiPost("/ai/analyze/", data);

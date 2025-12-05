@@ -9,7 +9,6 @@ export default function AiAnalysisPage() {
   const { data, loading, error } = useDashboard();
   const { analysis, loadingAI, errorAI, analyze } = useIA();
 
-  // Gera análise automaticamente ao entrar na página
   useEffect(() => {
     if (data) analyze(data);
   }, [data]);

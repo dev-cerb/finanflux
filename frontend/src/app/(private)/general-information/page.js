@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import useGeneralInfo from "@/hooks/useGeneralInformation";
+import { BASE_URL } from "@/services/api";
 
 export default function GeneralInformationPage() {
   const { info, loading, error, reload } = useGeneralInfo();
@@ -27,7 +28,7 @@ export default function GeneralInformationPage() {
   const createGeneralInfo = async () => {
     setSaving(true);
 
-    const response = await fetch("http://localhost:8000/api/v1/general-information/", {
+    const response = await fetch(`${BASE_URL}/general-information/`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -51,7 +52,7 @@ export default function GeneralInformationPage() {
     setSaving(true);
 
     const response = await fetch(
-      `http://localhost:8000/api/v1/general-information/${info.id}/`,
+      `${BASE_URL}/general-information/${info.id}/`,
       {
         method: "PUT",
         headers: {

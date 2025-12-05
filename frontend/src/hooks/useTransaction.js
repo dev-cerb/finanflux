@@ -1,4 +1,5 @@
 "use client";
+import { BASE_URL } from "@/services/api";
 import { useEffect, useState } from "react";
 
 export default function useTransactions() {
@@ -13,7 +14,7 @@ export default function useTransactions() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:8000/api/v1/transactions/", {
+      const response = await fetch(`${BASE_URL}/transactions/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

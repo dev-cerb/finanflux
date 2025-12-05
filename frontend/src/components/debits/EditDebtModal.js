@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_URL } from "@/services/api";
 import { useState } from "react";
 
 export default function EditDebtModal({ item, onClose, onUpdated, reload }) {
@@ -16,7 +17,7 @@ export default function EditDebtModal({ item, onClose, onUpdated, reload }) {
     setSaving(true);
 
     const response = await fetch(
-      `http://localhost:8000/api/v1/debits/${item.id}/`,
+      `${BASE_URL}/debits/${item.id}/`,
       {
         method: "PUT",
         headers: {
@@ -46,7 +47,7 @@ export default function EditDebtModal({ item, onClose, onUpdated, reload }) {
     if (!confirm("Tem certeza que deseja excluir?")) return;
 
     const response = await fetch(
-      `http://localhost:8000/api/v1/debits/${item.id}/`,
+      `${BASE_URL}/debits/${item.id}/`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },

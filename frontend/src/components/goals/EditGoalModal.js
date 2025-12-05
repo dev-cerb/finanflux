@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_URL } from "@/services/api";
 import { useState } from "react";
 
 export default function EditGoalModal({ item, onClose, onUpdated }) {
@@ -23,7 +24,7 @@ export default function EditGoalModal({ item, onClose, onUpdated }) {
     setSaving(true);
 
     const response = await fetch(
-      `http://localhost:8000/api/v1/goals/${item.id}/`,
+      `${BASE_URL}/goals/${item.id}/`,
       {
         method: "PUT",
         headers: {
@@ -53,7 +54,7 @@ export default function EditGoalModal({ item, onClose, onUpdated }) {
     if (!confirm("Tem certeza que deseja excluir esta meta?")) return;
 
     const response = await fetch(
-      `http://localhost:8000/api/v1/goals/${item.id}/`,
+      `${BASE_URL}/goals/${item.id}/`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },

@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_URL } from "@/services/api";
 import { useEffect, useState } from "react";
 
 export default function useGeneralInfo() {
@@ -14,7 +15,7 @@ export default function useGeneralInfo() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:8000/api/v1/general-information/", {
+      const response = await fetch(`${BASE_URL}/general-information/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
