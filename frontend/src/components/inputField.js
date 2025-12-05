@@ -23,7 +23,7 @@ export default function InputField({
         required={required}
         className="
           w-full
-          bg-nubank-dark 
+          bg-color-dark 
           text-white 
           border border-purple-700 
           rounded-lg 
@@ -31,7 +31,7 @@ export default function InputField({
           placeholder-purple-400
           focus:outline-none 
           focus:ring-2 
-          focus:ring-nubank-purple
+          focus:ring-color-purple
         "
       />
     </div>

@@ -6,7 +6,8 @@ from .views import (
     DebitViewSet,
     CategoryViewSet,
     TransactionViewSet,
-    DashboardSummaryAPIView
+    DashboardSummaryAPIView,
+    AnalyzeFinancialView
 )
 
 router = DefaultRouter()
@@ -19,4 +20,5 @@ router.register(r'transactions', TransactionViewSet, basename='transactions')
 urlpatterns = [
     path('', include(router.urls)),
     path('dashboard/', DashboardSummaryAPIView.as_view(), name='dashboard-summary'),
+    path('ai/analyze/', AnalyzeFinancialView.as_view(), name="ai-analyse")
 ]

@@ -25,7 +25,7 @@ export default function DashboardPage() {
     <div className="text-white space-y-12">
 
 
-      <h1 className="text-4xl font-bold tracking-tight text-nubank-purple">
+      <h1 className="text-4xl font-bold tracking-tight text-color-purple">
         Olá, {username} 👋
       </h1>
       
@@ -52,7 +52,7 @@ export default function DashboardPage() {
         <h2 className="text-2xl font-semibold text-purple-300 tracking-tight">Categorias</h2>
 
         {categories.length === 0 ? (
-          <div className="bg-nubank-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/20 text-purple-300">
+          <div className="bg-color-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/20 text-purple-300">
             Nenhuma categoria cadastrada ainda.
           </div>
         ) : (

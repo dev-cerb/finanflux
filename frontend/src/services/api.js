@@ -95,7 +95,6 @@ export async function apiDelete(path, { noAuth = false } = {}) {
   return handleResponse(res);
 }
 
-/* Utilitários opcionais */
 export function setLocalToken(token) {
   if (typeof window !== 'undefined') localStorage.setItem('token', token);
 }

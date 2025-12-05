@@ -7,7 +7,7 @@ export default function TransactionItem({ item, onClick }) {
     <div
       onClick={onClick}
       className="
-        bg-nubank-card
+        bg-color-card
         p-4 
         rounded-xl 
         border border-purple-900/40

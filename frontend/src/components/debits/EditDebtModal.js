@@ -63,7 +63,7 @@ export default function EditDebtModal({ item, onClose, onUpdated, reload }) {
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-      <div className="bg-nubank-card p-6 rounded-xl w-full max-w-md space-y-4 border border-purple-900">
+      <div className="bg-color-card p-6 rounded-xl w-full max-w-md space-y-4 border border-purple-900">
         <h2 className="text-xl font-bold text-white">Editar Dívida</h2>
 
         <input className="input bg-purple-950" value={name} onChange={e => setName(e.target.value)} />
@@ -73,7 +73,7 @@ export default function EditDebtModal({ item, onClose, onUpdated, reload }) {
 
         <div className="flex gap-3">
           <button onClick={remove} className="btn bg-red-600 w-full">Excluir</button>
-          <button onClick={save} className="btn bg-nubank-purple w-full">
+          <button onClick={save} className="btn bg-color-purple w-full">
             {saving ? "Salvando..." : "Salvar"}
           </button>
         </div>

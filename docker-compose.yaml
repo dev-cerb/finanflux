@@ -4,7 +4,7 @@ services:
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_DB: projetotcc
+      POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
@@ -22,12 +22,15 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - ollama
     environment:
       DB_NAME: postgres
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_HOST: db
       DB_PORT: 5432
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: llama3
 
   frontend:
     build: ./frontend
@@ -40,7 +43,18 @@ services:
     depends_on:
       - backend
     environment:
-      NEXT_PUBLIC_BACKEND_URL: http://backend:8000
+      NEXT_PUBLIC_BACKEND_URL: http://localhost:8000
+
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
 
 volumes:
   pgdata:
+  ollama_data:

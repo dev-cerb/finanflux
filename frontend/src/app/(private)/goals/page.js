@@ -17,11 +17,11 @@ export default function GoalsPage() {
   return (
     <div className="text-white space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold text-nubank-purple">Metas</h1>
+        <h1 className="text-4xl font-bold text-color-purple">Metas</h1>
 
         <button
           onClick={() => setShowNewModal(true)}
-          className="bg-nubank-purple hover:bg-nubank-purple/80 px-4 py-2 rounded-lg font-bold"
+          className="bg-color-purple hover:bg-color-purple/80 px-4 py-2 rounded-lg font-bold"
         >
           Nova Meta
         </button>

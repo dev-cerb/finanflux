@@ -61,11 +61,11 @@ export default function ProfilePage() {
   return (
     <div className="text-white space-y-10">
 
-      <h1 className="text-4xl font-bold text-nubank-purple">
+      <h1 className="text-4xl font-bold text-color-purple">
         Perfil de Investidor
       </h1>
 
-      <div className="bg-nubank-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/30">
+      <div className="bg-color-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/30">
 
         <label className="block text-purple-300 mb-2">
           Selecione seu tipo de investidor
@@ -82,7 +82,7 @@ export default function ProfilePage() {
         </select>
 
         <div className="mt-4 p-4 bg-purple-900/40 rounded-lg border border-purple-800">
-        <h2 className="text-lg font-semibold text-nubank-purple mb-2">
+        <h2 className="text-lg font-semibold text-color-purple mb-2">
             Sobre o seu perfil
         </h2>
 
@@ -113,7 +113,7 @@ export default function ProfilePage() {
           <button
             onClick={createProfile}
             disabled={saving}
-            className="mt-6 px-6 py-2 rounded-lg bg-nubank-purple hover:bg-nubank-purple/80 font-bold text-white"
+            className="mt-6 px-6 py-2 rounded-lg bg-color-purple hover:bg-color-purple/80 font-bold text-white"
           >
             {saving ? "Salvando..." : "Criar Perfil"}
           </button>
@@ -123,7 +123,7 @@ export default function ProfilePage() {
           <button
             onClick={updateProfile}
             disabled={saving}
-            className="mt-6 px-6 py-2 rounded-lg bg-nubank-purple hover:bg-nubank-purple/80 font-bold text-white"
+            className="mt-6 px-6 py-2 rounded-lg bg-color-purple hover:bg-color-purple/80 font-bold text-white"
           >
             {saving ? "Salvando..." : "Salvar Alterações"}
           </button>

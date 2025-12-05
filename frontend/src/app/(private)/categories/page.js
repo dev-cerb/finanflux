@@ -17,11 +17,11 @@ export default function CategoriesPage() {
     <div className="text-white space-y-10">
 
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold text-nubank-purple">Categorias</h1>
+        <h1 className="text-4xl font-bold text-color-purple">Categorias</h1>
 
         <button
           onClick={() => { setEditing(null); setShowModal(true); }}
-          className="bg-nubank-purple hover:bg-nubank-purpleLight transition-all px-6 py-2 rounded-lg font-bold text-white"
+          className="bg-color-purple hover:bg-color-purpleLight transition-all px-6 py-2 rounded-lg font-bold text-white"
         >
           Nova Categoria
         </button>
@@ -32,7 +32,7 @@ export default function CategoriesPage() {
 
       <div className="space-y-4">
         {data.length === 0 ? (
-          <div className="bg-nubank-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/20 text-purple-300">
+          <div className="bg-color-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/20 text-purple-300">
             Nenhuma categoria cadastrada ainda.
           </div>
         ) : (

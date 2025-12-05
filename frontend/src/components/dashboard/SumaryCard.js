@@ -3,7 +3,7 @@
 export default function SummaryCard({ title, value }) {
   return (
     <div className="
-        bg-nubank-card 
+        bg-color-card 
         p-5 
         rounded-xl 
         shadow-lg 

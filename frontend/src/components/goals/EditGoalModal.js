@@ -71,7 +71,7 @@ export default function EditGoalModal({ item, onClose, onUpdated }) {
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
-      <div className="bg-nubank-card p-8 rounded-xl w-[420px] border border-purple-900/40 shadow-xl shadow-black/40">
+      <div className="bg-color-card p-8 rounded-xl w-[420px] border border-purple-900/40 shadow-xl shadow-black/40">
 
         <h2 className="text-2xl font-bold text-white mb-6">
           Editar Meta
@@ -132,7 +132,7 @@ export default function EditGoalModal({ item, onClose, onUpdated }) {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="px-6 py-2 bg-nubank-purple hover:bg-nubank-purple/80 rounded-lg text-white font-semibold"
+            className="px-6 py-2 bg-color-purple hover:bg-color-purple/80 rounded-lg text-white font-semibold"
           >
             {saving ? "Salvando..." : "Salvar"}
           </button>

@@ -6,13 +6,13 @@ export default function DebtItem({ item, onEdit }) {
   const remaining = total - paid;
 
   return (
-    <div className="bg-nubank-card p-5 rounded-xl border border-purple-900/40 shadow-lg shadow-black/30">
+    <div className="bg-color-card p-5 rounded-xl border border-purple-900/40 shadow-lg shadow-black/30">
       
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-bold text-white">{item.name}</h2>
         <button 
           onClick={() => onEdit(item)} 
-          className="text-nubank-purple font-semibold hover:underline"
+          className="text-color-purple font-semibold hover:underline"
         >
           Editar
         </button>
@@ -22,7 +22,7 @@ export default function DebtItem({ item, onEdit }) {
         <p className="text-purple-200 text-sm mb-1">Progresso</p>
         <div className="w-full h-3 bg-purple-950 rounded">
           <div
-            className="h-full bg-nubank-purple rounded"
+            className="h-full bg-color-purple rounded"
             style={{ width: `${percentage}%` }}
           ></div>
         </div>

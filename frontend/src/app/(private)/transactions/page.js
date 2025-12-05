@@ -14,13 +14,13 @@ export default function TransactionsPage() {
   return (
     <div className="text-white space-y-10">
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold text-nubank-purple">Transações</h1>
+        <h1 className="text-4xl font-bold text-color-purple">Transações</h1>
 
         <button
         onClick={() => setShowModal(true)}
         className="
-            bg-nubank-purple
-            hover:bg-nubank-purpleLight
+            bg-color-purple
+            hover:bg-color-purpleLight
             transition-all
             px-6 py-2 
             rounded-lg 
@@ -36,7 +36,7 @@ export default function TransactionsPage() {
       <div className="space-y-4">
         {data.length === 0 ? (
           <div className="
-            bg-nubank-card
+            bg-color-card
             p-6 rounded-xl
             border border-purple-900/40 
             shadow-lg shadow-black/20 

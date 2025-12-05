@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        nubank: {
+        color: {
           dark: "#0A0014",
           card: "#2B0A45",
           purple: "#8A05BE",

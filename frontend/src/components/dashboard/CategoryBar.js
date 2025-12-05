@@ -5,7 +5,7 @@ export default function CategoryBar({ name, spent, budget }) {
   const exceeded = budget && spent > budget;
 
   return (
-    <div className="bg-nubank-card p-4 rounded-xl mb-3 border border-purple-900/30">
+    <div className="bg-color-card p-4 rounded-xl mb-3 border border-purple-900/30">
       <div className="flex justify-between text-sm text-purple-200 mb-2">
         <span>{name}</span>
         <span>
@@ -19,14 +19,14 @@ export default function CategoryBar({ name, spent, budget }) {
           className={`
             h-full 
             transition-all 
-            ${exceeded ? "bg-nubank-pink" : "bg-nubank-purpleLight"}
+            ${exceeded ? "bg-color-pink" : "bg-color-purpleLight"}
           `}
           style={{ width: `${percentage}%` }}
         ></div>
       </div>
 
       {exceeded && (
-        <p className="text-xs text-nubank-pink mt-1">
+        <p className="text-xs text-color-pink mt-1">
           Você excedeu o limite desta categoria
         </p>
       )}

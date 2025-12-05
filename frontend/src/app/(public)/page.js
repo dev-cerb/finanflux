@@ -43,12 +43,12 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-nubank-dark text-white px-4">
+    <main className="min-h-screen flex items-center justify-center bg-color-dark text-white px-4">
       {/* Card principal */}
-      <div className="w-full max-w-md bg-nubank-card p-8 rounded-2xl shadow-xl shadow-purple-900/40">
+      <div className="w-full max-w-md bg-color-card p-8 rounded-2xl shadow-xl shadow-purple-900/40">
         
         {/* Título */}
-        <h1 className="text-3xl font-bold text-center mb-8 text-nubank-purple">
+        <h1 className="text-3xl font-bold text-center mb-8 text-color-purple">
           FinanFlux
         </h1>
 
@@ -90,7 +90,7 @@ export default function Home() {
           {/* Botão */}
           <button
             type="submit"
-            className="w-full bg-nubank-purple hover:bg-nubank-purple/80 transition-colors py-2 rounded-lg font-bold text-white"
+            className="w-full bg-color-purple hover:bg-color-purple/80 transition-colors py-2 rounded-lg font-bold text-white"
           >
             Entrar
           </button>
@@ -101,7 +101,7 @@ export default function Home() {
           Novo por aqui?{" "}
           <Link
             href="/register"
-            className="text-nubank-purple font-semibold hover:underline"
+            className="text-color-purple font-semibold hover:underline"
           >
             Criar conta!
           </Link>
