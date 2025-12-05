@@ -55,9 +55,9 @@ export default function CategoryModal({ item, onClose, onSaved }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
-      <div className="bg-nubank-card p-8 rounded-2xl border border-purple-900/40 shadow-xl shadow-black/40 w-full max-w-md text-white">
+      <div className="bg-color-card p-8 rounded-2xl border border-purple-900/40 shadow-xl shadow-black/40 w-full max-w-md text-white">
 
-        <h2 className="text-2xl font-bold mb-6 text-nubank-purple">
+        <h2 className="text-2xl font-bold mb-6 text-color-purple">
           {item ? "Editar Categoria" : "Nova Categoria"}
         </h2>
 
@@ -101,7 +101,7 @@ export default function CategoryModal({ item, onClose, onSaved }) {
 
             <button
               type="submit"
-              className="px-6 py-2 rounded bg-nubank-purple hover:bg-nubank-purpleLight font-bold"
+              className="px-6 py-2 rounded bg-color-purple hover:bg-color-purpleLight font-bold"
             >
               {item ? "Salvar alterações" : "Criar categoria"}
             </button>

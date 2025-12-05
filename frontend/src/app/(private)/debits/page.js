@@ -41,10 +41,10 @@ export default function DebitsPage() {
     <div className="text-white space-y-6">
 
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold text-nubank-purple">Minhas Dívidas</h1>
+        <h1 className="text-4xl font-bold text-color-purple">Minhas Dívidas</h1>
         <button 
           onClick={() => setShowNewModal(true)}
-          className="bg-nubank-purple hover:bg-nubank-purple/80 px-4 py-2 rounded-lg font-bold"
+          className="bg-color-purple hover:bg-color-purple/80 px-4 py-2 rounded-lg font-bold"
         >
           Nova Dívida
         </button>
@@ -58,6 +58,10 @@ export default function DebitsPage() {
             onEdit={() => setEditing(d)}
           />
         ))}
+
+        {debits.length === 0 && (
+          <p className="text-purple-300">Nenhuma dívida cadastrada ainda.</p>
+        )}
       </div>
 
       {showNewModal && (

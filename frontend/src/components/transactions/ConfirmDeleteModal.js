@@ -3,9 +3,9 @@
 export default function ConfirmDeleteModal({ onCancel, onConfirm }) {
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
-      <div className="bg-nubank-card p-8 rounded-2xl border border-purple-900/40 shadow-xl shadow-black/40 w-full max-w-md text-white">
+      <div className="bg-color-card p-8 rounded-2xl border border-purple-900/40 shadow-xl shadow-black/40 w-full max-w-md text-white">
         
-        <h2 className="text-2xl font-bold mb-4 text-nubank-pink">
+        <h2 className="text-2xl font-bold mb-4 text-color-pink">
           Excluir transação
         </h2>
 
@@ -25,7 +25,7 @@ export default function ConfirmDeleteModal({ onCancel, onConfirm }) {
 
           <button
             onClick={onConfirm}
-            className="px-6 py-2 rounded bg-nubank-pink hover:bg-pink-500 text-white font-bold"
+            className="px-6 py-2 rounded bg-color-pink hover:bg-pink-500 text-white font-bold"
           >
             Excluir
           </button>

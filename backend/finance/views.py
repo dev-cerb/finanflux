@@ -2,8 +2,11 @@ from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework import status
+
 from django.utils.timezone import now
 from django.db.models import Sum
+
 from .models import (
     GeneralInformation,
     Goal,
@@ -18,6 +21,7 @@ from .serializers import (
     CategorySerializer,
     TransactionSerializer
 )
+from services.ai_service import analyze_financial_data
 
 class GeneralInformationViewSet(viewsets.ModelViewSet):
     serializer_class = GeneralInformationSerializer
@@ -78,32 +82,42 @@ class DashboardSummaryAPIView(APIView):
         today = now().date()
         month_start = today.replace(day=1)
 
-        # ---- 1. Salário ----
+        # Salário
         gi = GeneralInformation.objects.filter(user=user).first()
         salary = gi.salary if gi and gi.salary else 0
         limit = gi.limit if gi and gi.limit else 0
 
-        # ---- 2. Entradas ----
+        # Entradas
         entries = Transaction.objects.filter(
             user=user,
             type_of_transaction='entrada',
             date__gte=month_start
         ).aggregate(total=Sum('value'))['total'] or 0
 
-        # ---- 3. Saídas ----
+        # Saídas
         expenses = Transaction.objects.filter(
             user=user,
             type_of_transaction='saida',
             date__gte=month_start
         ).aggregate(total=Sum('value'))['total'] or 0
 
-        # ---- 4. Renda total ----
+        # Dividas
+        debit = Debit.objects.filter(
+            user=user,
+        ).aggregate(total=Sum('total_value'))['total'] or 0
+
+        # Metas
+        goal = Goal.objects.filter(
+            user=user,
+        ).aggregate(total=Sum('final_value'))['total'] or 0
+
+        # Renda total
         total_income = salary + entries
 
-        # ---- 5. Saldo ----
+        # Saldo
         balance = total_income - expenses
 
-        # ---- 6. Categorias ----
+        # Categorias
         categories = Category.objects.filter(user=user)
         categories_summary = []
 
@@ -124,7 +138,7 @@ class DashboardSummaryAPIView(APIView):
                 ),
             })
 
-        # ---- 7. Tipo de investidor (Profile) ----
+        # Profile
         investor_type = getattr(
             getattr(user, "profile", None), 
             "type_of_investor", 
@@ -138,6 +152,8 @@ class DashboardSummaryAPIView(APIView):
             "salary": float(salary),
             "limit": float(limit),
             "entries": float(entries),
+            "debits": float(debit),
+            "goals": float(goal),
             "expenses": float(expenses),
             "total_income": float(total_income),
             "balance": float(balance),
@@ -149,6 +165,10 @@ class DashboardSummaryAPIView(APIView):
 
             "entries_formatted": f"R$ {entries:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
 
+            "debits_formatted": f"R$ {debit:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
+
+            "goals_formatted": f"R$ {goal:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
+
             "expenses_formatted": f"R$ {expenses:,.2f}".replace(",", "X").replace(".", ",", ).replace("X", "."),
 
             "total_income_formatted": f"R$ {total_income:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."),
@@ -159,3 +179,15 @@ class DashboardSummaryAPIView(APIView):
         }
 
         return Response(summary)
+    
+class AnalyzeFinancialView(APIView):
+    def post(self, request):
+        dashboard_data = request.data
+
+        if not dashboard_data:
+            return Response({
+                "error": "Nenhum dado recebido para análise",
+            }, status=status.HTTP_400_BAD_REQUEST)
+        
+        analysis = analyze_financial_data(dashboard_data)
+        return Response({"analysis": analysis}, status=status.HTTP_200_OK)

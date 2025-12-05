@@ -3,7 +3,7 @@
 export default function CategoryItem({ item, onEdit, onDelete }) {
   return (
     <div className="
-      bg-nubank-card p-5 rounded-xl border border-purple-900/40
+      bg-color-card p-5 rounded-xl border border-purple-900/40
       shadow-lg shadow-black/20 flex justify-between items-center
       hover:bg-purple-900/40 transition cursor-pointer
     ">

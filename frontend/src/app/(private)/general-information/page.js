@@ -10,7 +10,9 @@ export default function GeneralInformationPage() {
   const [salary, setSalary] = useState("");
   const [limit, setLimit] = useState("");
 
-  const token = localStorage.getItem("token");
+  if(typeof window !== "undefined"){
+    const token = localStorage.getItem("token");
+  }
 
   useEffect(() => {
     if (info) {
@@ -74,11 +76,11 @@ export default function GeneralInformationPage() {
   return (
     <div className="text-white space-y-10">
 
-      <h1 className="text-4xl font-bold text-nubank-purple">
+      <h1 className="text-4xl font-bold text-color-purple">
         Informações Gerais
       </h1>
 
-      <div className="bg-nubank-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/30">
+      <div className="bg-color-card p-6 rounded-xl border border-purple-900/40 shadow-lg shadow-black/30">
 
         <label className="block text-purple-300 mb-1">Salário mensal</label>
         <input
@@ -102,7 +104,7 @@ export default function GeneralInformationPage() {
           <button
             onClick={createGeneralInfo}
             disabled={saving}
-            className="px-6 py-2 rounded-lg bg-nubank-purple hover:bg-nubank-purple/80 font-bold text-white"
+            className="px-6 py-2 rounded-lg bg-color-purple hover:bg-color-purple/80 font-bold text-white"
           >
             {saving ? "Salvando..." : "Criar Informações"}
           </button>
@@ -110,7 +112,7 @@ export default function GeneralInformationPage() {
           <button
             onClick={updateGeneralInfo}
             disabled={saving}
-            className="px-6 py-2 rounded-lg bg-nubank-purple hover:bg-nubank-purple/80 font-bold text-white"
+            className="px-6 py-2 rounded-lg bg-color-purple hover:bg-color-purple/80 font-bold text-white"
           >
             {saving ? "Salvando..." : "Salvar Alterações"}
           </button>

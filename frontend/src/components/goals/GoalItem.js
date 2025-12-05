@@ -5,7 +5,7 @@ export default function GoalItem({ item, onEdit }) {
   const nearGoal = progress >= 80;
 
   return (
-    <div className="bg-nubank-card p-5 rounded-xl border border-purple-900/40 shadow-lg shadow-black/30">
+    <div className="bg-color-card p-5 rounded-xl border border-purple-900/40 shadow-lg shadow-black/30">
       <div className="flex justify-between">
         <h2 className="text-xl font-semibold">{item.name}</h2>
 
@@ -25,7 +25,7 @@ export default function GoalItem({ item, onEdit }) {
       <div className="w-full h-3 bg-purple-800 rounded-full mt-3 overflow-hidden">
         <div
           className={`h-3 rounded-full transition-all ${
-            nearGoal ? "bg-green-400" : "bg-nubank-purple"
+            nearGoal ? "bg-green-400" : "bg-color-purple"
           }`}
           style={{ width: `${Math.min(progress, 100)}%` }}
         />
