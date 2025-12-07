@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import useProfile from "@/hooks/useProfile";
+import { BASE_URL } from "@/services/api";
 
 export default function ProfilePage() {
   const { profile, loading, error, reload } = useProfile();
@@ -17,7 +18,7 @@ export default function ProfilePage() {
   const createProfile = async () => {
     setSaving(true);
 
-    const response = await fetch("http://localhost:8000/api/v1/profiles/", {
+    const response = await fetch(`${BASE_URL}/profiles/`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -39,7 +40,7 @@ export default function ProfilePage() {
     setSaving(true);
 
     const response = await fetch(
-      `http://localhost:8000/api/v1/profiles/${profile.id}/`,
+      `${BASE_URL}/profiles/${profile.id}/`,
       {
         method: "PUT",
         headers: {

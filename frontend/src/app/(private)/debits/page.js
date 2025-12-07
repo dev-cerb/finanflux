@@ -5,6 +5,7 @@ import useDebits from "@/hooks/useDebits";
 import DebtItem from "@/components/debits/DebtItem";
 import NewDebtModal from "@/components/debits/NewDebtModal";
 import EditDebtModal from "@/components/debits/EditDebtModal";
+import { BASE_URL } from "@/services/api";
 
 export default function DebitsPage() {
   const { debits, loading, error, reload } = useDebits();
@@ -18,7 +19,7 @@ export default function DebitsPage() {
     const handleCreateDebit = async (newDebit) => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/v1/debits/", {
+    const response = await fetch(`${BASE_URL}/debits/`, {
         method: "POST",
         headers: {
         Authorization: `Bearer ${token}`,

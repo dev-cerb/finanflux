@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import useCategories from "@/hooks/useCategories";
+import { BASE_URL } from "@/services/api";
 
 export default function NewTransactionModal({ onClose, onCreated }) {
   const { data: categories } = useCategories();
@@ -23,7 +24,7 @@ export default function NewTransactionModal({ onClose, onCreated }) {
 
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/v1/transactions/", {
+    const response = await fetch(`${BASE_URL}/transactions/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

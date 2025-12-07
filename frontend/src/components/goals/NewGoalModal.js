@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_URL } from "@/services/api";
 import { useState } from "react";
 
 export default function NewGoalModal({ onClose, onCreated }) {
@@ -16,7 +17,7 @@ export default function NewGoalModal({ onClose, onCreated }) {
   const handleSubmit = async () => {
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:8000/api/v1/goals/", {
+    const response = await fetch(`${BASE_URL}/goals/`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

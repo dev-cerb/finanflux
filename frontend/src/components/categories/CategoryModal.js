@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_URL } from "@/services/api";
 import { useState, useEffect } from "react";
 
 export default function CategoryModal({ item, onClose, onSaved }) {
@@ -8,7 +9,6 @@ export default function CategoryModal({ item, onClose, onSaved }) {
     budget: "",
   });
 
-  // Preencher quando for edição
   useEffect(() => {
     if (item) {
       setForm({
@@ -28,8 +28,8 @@ export default function CategoryModal({ item, onClose, onSaved }) {
     const token = localStorage.getItem("token");
 
     const url = item
-      ? `http://localhost:8000/api/v1/categories/${item.id}/`
-      : `http://localhost:8000/api/v1/categories/`;
+      ? `${BASE_URL}/categories/${item.id}/`
+      : `${BASE_URL}/categories/`;
 
     const method = item ? "PUT" : "POST";
 
@@ -63,7 +63,6 @@ export default function CategoryModal({ item, onClose, onSaved }) {
 
         <form onSubmit={submit} className="space-y-5">
 
-          {/* Nome */}
           <div>
             <label className="text-sm text-purple-200">Nome</label>
             <input
@@ -75,7 +74,6 @@ export default function CategoryModal({ item, onClose, onSaved }) {
             />
           </div>
 
-          {/* Budget */}
           <div>
             <label className="text-sm text-purple-200">Limite mensal (R$)</label>
             <input
@@ -88,7 +86,6 @@ export default function CategoryModal({ item, onClose, onSaved }) {
             />
           </div>
 
-          {/* Botões */}
           <div className="flex justify-end gap-3 pt-4">
 
             <button

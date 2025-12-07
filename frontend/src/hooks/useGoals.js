@@ -1,5 +1,6 @@
 "use client";
 
+import { BASE_URL } from "@/services/api";
 import { useState, useEffect } from "react";
 
 export default function useGoals() {
@@ -14,7 +15,7 @@ export default function useGoals() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch("http://localhost:8000/api/v1/goals/", {
+      const response = await fetch(`${BASE_URL}/goals/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

@@ -5,6 +5,7 @@ import useCategories from "@/hooks/useCategories";
 import CategoryItem from "@/components/categories/CategoryItem";
 import CategoryModal from "@/components/categories/CategoryModal";
 import ConfirmDeleteModal from "@/components/categories/ConfirmDeleteModal";
+import { BASE_URL } from "@/services/api";
 
 export default function CategoriesPage() {
   const { data, loading, error, reload } = useCategories();
@@ -61,7 +62,7 @@ export default function CategoriesPage() {
           onCancel={() => setDeleting(null)}
           onConfirm={async () => {
             const token = localStorage.getItem("token");
-            await fetch(`http://localhost:8000/api/v1/categories/${deleting.id}/`, {
+            await fetch(`${BASE_URL}/categories/${deleting.id}/`, {
               method: "DELETE",
               headers: {
                 Authorization: `Bearer ${token}`,
