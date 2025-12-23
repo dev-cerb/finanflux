@@ -26,7 +26,7 @@ A aplicação permite que usuários registrem e acompanhem suas finanças pessoa
   - Dívidas
   - Metas financeiras
 - Dashboard financeiro com:
-  - Resumo mensal de receitas, despesas e saldo
+  - Resumo de receitas, despesas e saldo
   - Análise de gastos por categoria
 - Análise inteligente da situação financeira
 - Recomendações financeiras personalizadas baseadas no perfil do usuário
