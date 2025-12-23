@@ -101,7 +101,7 @@ docker compose exec backend python manage.py migrate
 - **Frontend:** http://localhost:3000  
 - **Backend (API):** http://localhost:8000/api/v1/  
 - **Admin Django:** http://localhost:8000/admin/
-- 
+
 ---
 
 ## 👨‍💻 Autor
