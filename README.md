@@ -1,13 +1,14 @@
 # 📊 Plataforma Inteligente para Recomendação de Estratégias Financeiras e Alocação de Ativos
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![Django](https://img.shields.io/badge/Django-5.x-success)
-![DRF](https://img.shields.io/badge/Django_REST_Framework-API-red)
-![Next.js](https://img.shields.io/badge/Next.js-15-black)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
-![Docker](https://img.shields.io/badge/Docker-Compose-blue)
-![JWT](https://img.shields.io/badge/Auth-JWT-orange)
-![AI](https://img.shields.io/badge/AI-LLM-purple)
+<p align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="40" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" width="40" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" width="40" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="40" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" width="40" />
+</p>
 
 Este projeto consiste em uma **plataforma web inteligente para gestão financeira pessoal**, desenvolvida como **Trabalho de Conclusão de Curso (TCC)**.  
 A aplicação permite que usuários registrem e acompanhem suas finanças pessoais e recebam **análises e recomendações financeiras personalizadas utilizando Inteligência Artificial**.
